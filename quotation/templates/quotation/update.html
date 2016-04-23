@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block body %}
+
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3" style="background-color: #876ff5; padding: 20px;">
+        <h1 align="center">DjangoQuotation</h1>
+        <div >
+                <form action="" method="post">  {% csrf_token %}
+                {{ user_form.as_p }}
+
+                <input type="submit" value="Update Form" class="btn btn-primary btn-lg btn-block" />
+                </form>
+
+         </div>
+    </div>
+</div>
+
+{% endblock %}

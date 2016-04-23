@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3" style="background-color: #876ff5; padding: 20px;">
+        <h1 align="center">DjangoQuotation</h1>
+        <div >
+			<h1>List Of Item Name </h1>
+
+			{% if item_list %}
+			{% for item in item_list %}
+			<h1>Item Detail</h1>
+
+				<ul>
+			    <h3><font color="red">Name:- {{ item.name|safe }}</font></h3>
+			    <h3>Quantity:- {{ item.quantity|safe }}</h3>
+			    <h3>Price:- {{ item.price|safe }}</h3>
+			    <h3>Total:- {{ item.total|safe }}</h3>
+				</ul>
+			{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

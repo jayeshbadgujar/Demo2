@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3" style="background-color: #876ff5; padding: 20px;">
+        <h1 align="center">Django Quotation</h1>
+        <div >
+			<h1>List Of Item Name </h1>
+
+			{% if item_list %}
+			{% for item in item_list %}
+			<h1>Item Detail</h1>
+
+				<ul>
+			    Name:- {{ item.name }}  <span class="glyphicon glyphicon-remove"></span>
+			   	</ul>
+			{% endfor %}
+			{% endif %}
+
+			<div>
+				<form method="post" action="">{% csrf_token %}
+					{{ form.as_p }}
+					<input type="submit" value="Delete Item" class="btn btn-danger btn-lg btn-block"></input>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
