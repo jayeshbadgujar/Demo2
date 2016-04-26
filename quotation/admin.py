@@ -4,7 +4,17 @@ from django.contrib import admin
 from .models import Quotation, Item
 
 
+class EmployeeInline(admin.StackedInline):
+    model = Item
 
+
+class CompanyAdmin(admin.ModelAdmin):
+
+    inlines = [
+        EmployeeInline,
+    ]
+
+    model = Quotation
 
 
 admin.site.register(Quotation)

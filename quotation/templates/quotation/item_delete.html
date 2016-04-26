@@ -7,14 +7,14 @@
     <div class="col-sm-6 col-sm-offset-3" style="background-color: #876ff5; padding: 20px;">
         <h1 align="center">Django Quotation</h1>
         <div >
-			<h1>List Of Item Name </h1>
+			<h1>List Of Item qotat_no </h1>
 
 			{% if item_list %}
 			{% for item in item_list %}
 			<h1>Item Detail</h1>
 
 				<ul>
-			    Name:- {{ item.name }}  <span class="glyphicon glyphicon-remove"></span>
+			    Qotat No:- {{ item.qotat_no }}  <span class="glyphicon glyphicon-remove"></span><a href="{% url 'quotation:delete_quotation' item.pk %}">Delete</a>
 			   	</ul>
 			{% endfor %}
 			{% endif %}

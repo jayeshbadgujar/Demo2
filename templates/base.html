@@ -16,11 +16,10 @@
   <body>
   {%  include "navbar.html" %}
 
+{% block extrahead %}{% endblock %}
 
 {% block body %}
-
- 
- {% endblock body %}
+{% endblock body %}
 
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/jquery.js' %}"></script>
