@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import fields, models, formsets, widgets
 from quotation.models import Item,  Quotation
 
 
@@ -33,6 +34,31 @@ class ItemForm(forms.ModelForm):
 			'price': forms.TextInput(attrs={ 'required': 'required' }),
 
 	}
+
+class AutoCompleteOrderedItemForm(models.ModelForm):
+    """
+    Display the Ordered Item form with an autocomplete textbox for the
+    Products instead of the Dropdown List.
+    """
+
+    class Meta:
+        model = Item
+        fields = '__all__'
+
+    class Media:
+        js = ('js/jquery.autocomplete.min.js', 'js/autocomplete-init.js',)
+        css = {
+            'all': ('css/jquery.autocomplete.css',),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(AutoCompleteOrderedItemForm, self).__init__(*args, **kwargs)
+        self.fields['qotat_no'].widget = widgets.TextInput(attrs={'class': 'autocomplete-me'})
+
+#important raju
+# def get_ordereditem_formset(formset=models.BaseInlineFormSet, **kwargs):
+#     return models.inlineformset_factory(Item, formset, **kwargs)
+
 
 
 def add_update_ad(request, pk=None):
